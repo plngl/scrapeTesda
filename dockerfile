@@ -1,4 +1,4 @@
-# Use an official Node.js LTS version (consider upgrading from 16 to 18 or 20)
+# Use an official Node.js LTS version
 FROM node:18
 
 # Install dependencies required for running Playwright in a headless environment
@@ -41,7 +41,6 @@ WORKDIR /app
 
 # Copy package files first to leverage Docker cache
 COPY package*.json ./
-COPY playwright.config.ts ./
 
 # Install app dependencies
 RUN npm install
@@ -55,5 +54,5 @@ COPY . .
 # Expose the port that your app will run on
 EXPOSE 10000
 
-# Command to run the app (consider adding xvfb-run if you need it)
+# Command to run the app
 CMD ["node", "server.js"]
